@@ -53,9 +53,9 @@ class BadgeClassController extends Controller
      * @param  \App\Models\BadgeClass  $badgeClass
      * @return \Illuminate\Http\Response
      */
-    public function show(BadgeClass $badgeClass)
+    public function show($uuid, $badgeClass)
     {
-        return $this->badgeClassService->getBadgeClassByUuid($badgeClass->uuid);
+        return $this->badgeClassService->getBadgeClassByUuid($badgeClass);
     }
 
     /**

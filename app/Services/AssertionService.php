@@ -25,7 +25,7 @@ class AssertionService
                 "identity" => "sha256$".hash('sha256', $assertion->recipient_email.$assertion->entity_id),
                 // 'email' => hash('sha256', $assertion->recipient_email.$assertion->entity_id),
             ],
-            'badge' => route('badgeClass.show', $assertion->badge_class_uuid),
+            'badge' => route('badgeClass.show', [$assertion->badge->issuer_uuid, $assertion->badge_class_uuid]),
             'verification' => [
                 'type' => $assertion->verification_type,
                 'url' => $assertion->verification_url,

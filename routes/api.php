@@ -29,13 +29,13 @@ Route::prefix('v1/ob')->group(function () {
         Route::post('/store', [IssuerController::class, 'store']);
     });
 
-    Route::prefix('badges')->group(function () {
+    Route::prefix('badgeclass')->group(function () {
         Route::get('/', [BadgeClassController::class, 'index'])->name('badgeClass.index');
-        Route::get('/{badgeClass:uuid}', [BadgeClassController::class, 'show'])->name('badgeClass.show');
+        Route::get('/issuer/{uuid}/badge/{badgeClass:uuid}', [BadgeClassController::class, 'show'])->name('badgeClass.show');
         Route::post('/store', [BadgeClassController::class, 'store']);
     });
 
-    Route::prefix('awards')->group(function () {
+    Route::prefix('assertion')->group(function () {
         Route::get('/', [AssertionController::class, 'index'])->name('assertion.index');
         Route::get('/{assertion:uuid}', [AssertionController::class, 'show'])->name('assertion.show');
         Route::post('/store', [AssertionController::class, 'store']);

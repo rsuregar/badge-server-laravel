@@ -38,4 +38,10 @@ class Assertion extends Model
     {
         $this->attributes['expires_on'] = \Carbon\Carbon::parse($value)->format('Y-m-d H:i:s');
     }
+
+
+     public function badge()
+     {
+         return $this->belongsTo(BadgeClass::class, 'badge_class_uuid', 'uuid');
+     }
 }

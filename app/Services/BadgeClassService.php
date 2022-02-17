@@ -17,7 +17,7 @@ class BadgeClassService
         $data = [
             '@context' => $this->content,
             'type' => "BadgeClass",
-            'id' => route('badgeClass.show', $badgeClass->uuid),
+            'id' => route('badgeClass.show', [$badgeClass->issuer_uuid, $badgeClass->uuid]),
             'name' => $badgeClass->name,
             'description' => $badgeClass->description,
             'image' => $badgeClass->image,
