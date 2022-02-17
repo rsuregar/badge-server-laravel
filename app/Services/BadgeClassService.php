@@ -21,7 +21,7 @@ class BadgeClassService
             'name' => $badgeClass->name,
             'description' => $badgeClass->description,
             'image' => $badgeClass->image,
-            'criteria' => $badgeClass->criteria,
+            'criteria' => "https://rsuregar.my.id",
             'issuer' => route('issuer.show', $badgeClass->issuer_uuid),
             'tags' => $badgeClass->tags,
             'alignment' => $badgeClass->alignment,
