@@ -23,4 +23,19 @@ class Assertion extends Model
             $model->entity_id = (string) \Str::random(16);
         });
     }
+
+    protected $casts = [
+        'issued_on' => 'datetime',
+        'expires_on' => 'datetime',
+    ];
+
+    public function setIssuedOnAttribute($value)
+    {
+        $this->attributes['issued_on'] = \Carbon\Carbon::parse($value)->format('Y-m-d H:i:s');
+    }
+
+    public function setExpiresOnAttribute($value)
+    {
+        $this->attributes['expires_on'] = \Carbon\Carbon::parse($value)->format('Y-m-d H:i:s');
+    }
 }
