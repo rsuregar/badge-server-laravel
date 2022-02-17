@@ -24,7 +24,7 @@ return new class extends Migration
             $table->string('recipient_email');
             $table->timestamp('issued_on')->nullable()->default(NULL);
             $table->timestamp('expires_on')->nullable()->default(NULL);
-            $table->enum('verification_type', ['hosted', 'signedBadge'])->nullable()->default('hosted');
+            $table->enum('verification_type', ['HostedBadge', 'SignedBadge'])->nullable()->default('HostedBadge');
             $table->softDeletes();
 
             $table->foreign('badge_class_uuid')->references('uuid')->on('badge_classes')->onDelete('cascade');
