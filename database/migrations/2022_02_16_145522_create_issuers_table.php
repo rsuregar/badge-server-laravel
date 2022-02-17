@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('email');
             $table->string('website');
             $table->string('image');
-            $table->fullText('description');
+            $table->text('description');
             $table->foreignId('organization_type')->nullable();
             $table->string('organization_name')->nullable();
             $table->string('organization_address')->nullable();

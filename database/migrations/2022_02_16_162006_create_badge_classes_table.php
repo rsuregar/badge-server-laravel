@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('entity_id')->unique();
             $table->uuid('issuer_uuid');
             $table->string('name');
-            $table->fullText('description');
+            $table->text('description');
             $table->string('image');
             $table->softDeletes();
             $table->timestamps();
