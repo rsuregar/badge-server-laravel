@@ -42,6 +42,7 @@ class CreateUserFromProvider implements CreatesUserFromProvider
             return tap(User::create([
                 'name' => $providerUser->getName() ?? $providerUser->getNickname(),
                 'email' => $providerUser->getEmail(),
+                'role_id' => 2,
             ]), function (User $user) use ($provider, $providerUser) {
                 $user->markEmailAsVerified();
 
