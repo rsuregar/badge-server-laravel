@@ -23,14 +23,6 @@ class IssuerService
             'email' => $issuer->email,
             'description' => $issuer->description,
             'image' => $issuer->image,
-            'additionalData' => [
-                'organization' => [
-                    'type' => $issuer->organization_type,
-                    'name' => $issuer->organization_name,
-                    'address' => $issuer->organization_address,
-                    'public_id' => $issuer->public_key,
-                ],
-            ]
         ];
         return response()->json($data, 200);
     }
@@ -53,14 +45,6 @@ class IssuerService
                 'email' => $issuer->email,
                 'description' => $issuer->description,
                 'image' => $issuer->image,
-                'additionalData' => [
-                    'organization' => [
-                        'type' => $issuer->organization_type,
-                        'name' => $issuer->organization_name,
-                        'address' => $issuer->organization_address,
-                        'public_id' => $issuer->public_key,
-                    ],
-                ]
             ];
         }
 

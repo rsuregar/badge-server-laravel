@@ -21,11 +21,13 @@ class BadgeClassService
             'name' => $badgeClass->name,
             'description' => $badgeClass->description,
             'image' => $badgeClass->image,
-            'criteria' => "https://rsuregar.my.id",
+            'criteria' => [
+                'id' => $badgeClass->criteria ?? "https://w3id.org/openbadges/v2/badgeclass/".$badgeClass->uuid,
+                'narrative' => $badgeClass->criteria_narrative,
+            ],
             'issuer' => route('issuer.show', $badgeClass->issuer_uuid),
-            'tags' => $badgeClass->tags,
-            'alignment' => $badgeClass->alignment,
-            'extensions' => $badgeClass->extensions,
+            'tags' => $badgeClass->tags ?? [],
+            'alignment' => $badgeClass->alignment ?? [],
         ];
         return response()->json($data, 200);
     }
