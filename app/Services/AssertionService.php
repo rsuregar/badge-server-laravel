@@ -20,26 +20,32 @@ class AssertionService
             'id' => route('assertion.show', $assertion->uuid),
             'recipient' => [
                 "type" => "email",
-                "hashed" => true,
                 "salt" => $assertion->entity_id,
+                "hashed" => true,
                 "identity" => "sha256$".hash('sha256', $assertion->recipient_email.$assertion->entity_id),
-                // 'email' => hash('sha256', $assertion->recipient_email.$assertion->entity_id),
             ],
-            'badge' => route('badgeClass.show', [$assertion->badge->issuer_uuid, $assertion->badge_class_uuid]),
-            'verification' => [
-                'type' => $assertion->verification_type,
-                'url' => $assertion->verification_url,
-                'publicKey' => $assertion->verification_public_key,
+            'image' => [
+                'id' => $assertion->image,
             ],
             'issuedOn' => $assertion->issued_on,
             'expires' => $assertion->expires_on,
             'evidence' => $assertion->evidence,
-            'revoked' => $assertion->revoked,
+            'revoked' => $assertion->revoked ?? false,
             'revocationReason' => $assertion->revocation_reason,
             'narrative' => $assertion->narrative,
-            'attachments' => $assertion->attachments
+            'badge' => route('badgeClass.show', [$assertion->badge->issuer_uuid, $assertion->badge_class_uuid]),
+            'verification' => [
+                'type' => $assertion->verification_type,
+            ],
+            'extensions.recipientProfile' => [
+                '@context' => "https://openbadgespec.org/extensions/recipientProfile/context.json",
+                'name' => $assertion->recipient_name,
+                'type' => [
+                    "Extension",
+                    "extensions:RecipientProfile",
+                ]
+            ],
         ];
         return response()->json($data, 200);
     }
-
 }

@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Livewire\{IssuerForm};
 
 
 /*
@@ -22,9 +23,8 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');
 
-// Route::middleware(['auth:sanctum', 'verified'])->group(function () {
-//     Route::prefix('issuer')->group(function () {
-//         Route::get('/', IssuerWire::class)->name('issuer.index');
-//         Route::get('/create', IssuerCreate::class)->name('issuer.create');
-//     });
-// });
+Route::middleware(['auth:sanctum', 'verified'])->group(function () {
+    Route::prefix('issuer')->group(function () {
+        Route::get('/', IssuerForm::class)->name('issuer');
+    });
+});

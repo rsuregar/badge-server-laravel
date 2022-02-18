@@ -28,5 +28,15 @@ class BadgeClass extends Model
         return $this->belongsTo(Issuer::class, 'issuer_uuid', 'uuid');
     }
 
+    /**
+     * Get all of the awarded for the BadgeClass
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function awarded()
+    {
+        return $this->hasMany(Assertion::class, 'badge_class_uuid', 'uuid');
+    }
+
 
 }

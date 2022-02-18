@@ -25,4 +25,14 @@ class Issuer extends Model
             $model->entity_id = (string) \Str::random(16);
         });
     }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
+    public function badges()
+    {
+        return $this->hasMany(BadgeClass::class, 'issuer_uuid', 'uuid');
+    }
 }
